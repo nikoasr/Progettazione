@@ -1,47 +1,49 @@
-<div class="row">
-
-	<div class="col-md-4">
-
-
-	</div>
-
-	<div class="col-md-8">
-
-		<div class="book-info">
-
-			<h2 class="book-title"><%= @exam.nome %></h2>
-			
-
-		</div>
-	</div>
-
-
-</div>
-
-<div class="row">
-
-	<div class="col-md-4">
-
-		<div class="reviews">
-
-			<!-- Where the reviews/ratings will go -->
-			<h1>Reviews</h1>
-			
-
-			<div>
-				<%= link_to "Add Review", root_path, class: "btn-custom" %>
-			</div>
-
-		</div>	
-
-	</div>
-
-</div>
-
-<div class="links btn-group">
-
-	<%= link_to "Back", root_path, class: "btn btn-custom" %>
-
-	
-
-</div>	
+<% if current_user %>  
+    <div class="row">
+    
+    	<div class="col-md-4">
+    
+    
+    	</div>
+    
+    	<div class="col-md-8">
+    
+    		<div class="book-info">
+    
+    			<h2 ><%= @exam.nome %></h2>
+    			<h3 ><span>Prof.</span> <a href = "<%= @exam.sito %>"  target=”_blank”><%= @exam.professore %></a></h3>
+    
+    		</div>
+    	</div>
+    
+    
+    </div>
+    
+    <div class="row">
+    
+    	<div class="col-md-4">
+    
+    		<div class="reviews">
+    
+    			<!-- Where the reviews/ratings will go -->
+    			<h1>Difficoltà</h1>
+    			
+    
+    			<div>
+    				<%= link_to "Aggiungi Difficoltà", root_path, class: "btn-custom" %>
+    			</div>
+    
+    		</div>	
+    
+    	</div>
+    
+    </div>
+    
+    <div class="links btn-group">
+    
+    	<%= link_to "Back", root_path, class: "btn btn-custom" %>
+    
+    	
+    
+    </div>	
+<% end %>
