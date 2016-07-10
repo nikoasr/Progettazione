@@ -1,15 +1,36 @@
 
 
 <% if current_user %>  
+    
+    
     <% if @exams.count == 0 %>
         <h1>There are no exams currently in this category</h1>
+    
+    
     <% else %>
-        <h3>Esami</h3>
-        <% @exams.each do |exam| %>
-            <h2><%= exam.nome %></h2>
-        <% end %>
+    
+        <div class="row">
+            <h3>Esami</h3>
+    		<% @exams.each do |exam| %>
+    
+    			<div class="col-md-12">
+    				<a href="/exams/<%= exam.id %>">
+    					<h2><%= exam.nome %></h2>
+    				</a>
+    			</div>	
+    
+    		<% end %>
+    
+    	</div>
+    
+    
+        
     <% end %>
+
+
 <% else %>
+  
     <h1>Effettua il login per utilizzare il sito</h1>
+
 <% end %>
     

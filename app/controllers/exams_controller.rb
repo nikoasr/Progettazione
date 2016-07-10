@@ -1,6 +1,6 @@
 class ExamsController < ApplicationController
     before_action :current_user, only: [:show]
-
+    before_action :find_exam, only: [:show]
     
     
     def index
@@ -12,7 +12,7 @@ class ExamsController < ApplicationController
     end
     
     def show
-    
+        
     end
     
     private
