@@ -1,7 +1,15 @@
-<h1>Esami</h1>
-<% if session[:user_id] != nil %>
-    <% @exams.each do |exam| %>
-        <h2><%= exam.nome %></h2>
+
+
+<% if current_user %>  
+    <% if @exams.count == 0 %>
+        <h1>There are no exams currently in this category</h1>
+    <% else %>
+        <h3>Esami</h3>
+        <% @exams.each do |exam| %>
+            <h2><%= exam.nome %></h2>
+        <% end %>
     <% end %>
+<% else %>
+    <h1>Effettua il login per utilizzare il sito</h1>
 <% end %>
     

@@ -1,21 +1,77 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Workspace</title>
+  <title>UniGroup</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
-<div id="user_nav">
-  <% if current_user %>
-    Signed in as <strong><%= current_user.name %></strong>!
-    <%= link_to "Sign out", signout_path, id: "sign_out" %>
-  <% else %>
-    <%= link_to "Sign in with Facebook", "/auth/facebook", id: "sign_in" %>
-  <% end %>
+
+
+<nav class="navbar navbar-default">
+
+		<div class="container">
+
+			<div class="navbar-header">
+				<%= link_to "UniGroup", root_path, class: "navbar-brand" %>
+			</div>
+
+			<ul class="nav navbar-nav navbar-center">
+			  <li>
+  				<% if current_user %>  
+            <a href="#">Signed in as <strong><%= current_user.name %></a>
+
+          <% end %>
+				</li>  
+			</ul>
+      
+      
+			<ul class="nav navbar-nav navbar-right">
+
+				<li class="dropdown">
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Categories <span class="caret"></span></a>
+					<ul class="dropdown-menu" role="menu">
+						<li class="<%= 'active' if params[:anno] == '1' %>">
+								<%= link_to "Primo Anno", exams_path(anno: '1'), class: "link" %>
+						</li>
+						<li class="<%= 'active' if params[:anno] == '2' %>">
+								<%= link_to "Secondo Anno", exams_path(anno: '2'), class: "link" %>
+						</li>
+						<li class="<%= 'active' if params[:anno] == '3' %>">
+								<%= link_to "Terzo Anno", exams_path(anno: '3'), class: "link" %>
+						</li>
+					</ul>
+				</li>
+          
+        <li>
+  				<% if current_user %>  
+            <%= link_to "Sign out", signout_path, id: "sign_out" %>
+            
+          <% end %>
+				</li>  
+        <li>
+  				<% if current_user %>
+            
+          <% else %>
+            <%= link_to "Sign in with Facebook", "/auth/facebook", id: "sign_in" %>
+          <% end %>
+				</li>
+			</ul>
+
+		</div>
+
+</nav>
+  
+  
+  
+  
+
+
+
+<div class="container"
+  <%= yield %>
 </div>
-<%= yield %>
 
 </body>
 </html>
