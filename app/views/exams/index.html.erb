@@ -1,1 +1,7 @@
-<h1>Ciao</h1>
+<h1>Esami</h1>
+<% if session[:user_id] != nil %>
+    <% @exams.each do |exam| %>
+        <h2><%= exam.nome %></h2>
+    <% end %>
+<% end %>
+    
