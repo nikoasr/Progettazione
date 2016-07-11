@@ -21,9 +21,23 @@
     
     <div class="row">
     
-    	<div class="col-md-4">
+    	<div class="col-md-12">
     
-    		<div class="reviews">
+    		
+    
+    			<!-- Where the reviews/ratings will go -->
+    			<h1>Gruppi di studio</h1>
+    			
+    
+    			<div>
+    				<%= link_to "Aggiungi Gruppo", root_path, class: "btn-custom" %>
+    			</div>
+    
+    	</div>	
+    		
+    	<div class="col-md-12">
+    
+    		<div>
     
     			<!-- Where the reviews/ratings will go -->
     			<h1>Difficoltà</h1>
@@ -36,14 +50,11 @@
     		</div>	
     
     	</div>
+    	
+    		
     
+
     </div>
     
-    <div class="links btn-group">
-    
-    	<%= link_to "Back", root_path, class: "btn btn-custom" %>
-    
-    	
-    
-    </div>	
+   
 <% end %>
