@@ -10,7 +10,17 @@
     		<div >
     
     			<h2 ><%= @exam.nome %></h2>
-    			<h3 ><span>Prof.</span> <a href = "<%= @exam.sito %>"  target=”_blank”><%= @exam.professore %></a></h3>
+    			<h3>
+    			     <span>Prof.</span> 
+    			     <a href = "<%= @exam.sito %>"  target=”_blank”><%= @exam.professore %> </a>
+    			        <% if @exam.professore2 != "" %>, 
+    			        
+    			            <a href = "<%= @exam.sito %>"  target=”_blank”><%= @exam.professore2 %> </a>
+    			        
+    			        <% end %>
+    			        
+    			     </a>
+    			 </h3>
     
     		</div>
     	</div>
@@ -29,7 +39,7 @@
     			
     
     			<div>
-    				<%= link_to "Aggiungi Gruppo", root_path, class: "btn-custom" %>
+    				<%= link_to "Aggiungi Gruppo", root_path, class: "btn btn-default" %>
     			</div>
     
     	</div>	
@@ -43,14 +53,14 @@
     			
     
     			<div>
-    				<%= link_to "Aggiungi Difficoltà", root_path, class: "btn-custom" %>
+    				<%= link_to "Aggiungi Difficoltà", root_path, class: "btn btn-default" %>
     			</div>
     
     		</div>	
     
     	</div>
     	<div class="col-md-12">
-            <div>	
+            <div class="links btn-group">	
             	<% if current_user.id == 1 %>  
                         <%= link_to "Edit", edit_exam_path(@exam), class: "btn btn-warning" %>
         			    <%= link_to "Delete", exam_path(@exam), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-danger" %>    		
@@ -60,6 +70,8 @@
     	</div>
 
     </div>
+    
+    
     
    
 

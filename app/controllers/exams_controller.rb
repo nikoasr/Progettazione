@@ -31,6 +31,7 @@ class ExamsController < ApplicationController
     end
     
     def update
+    	
 		if @exam.update(exam_params)
 			redirect_to exam_path(@exam)
 		else
@@ -46,7 +47,7 @@ class ExamsController < ApplicationController
     private
        
         def exam_params
-			params.require(:exam).permit(:nome, :anno, :professore, :sito)
+			params.require(:exam).permit(:nome, :anno, :professore, :sito, :professore2)
 		end
 
 		def find_exam
