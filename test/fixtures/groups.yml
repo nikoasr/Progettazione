@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  date: 2016-07-13
+  message: MyText
+  user_id: 1
+  exam_id: 1
+
+two:
+  date: 2016-07-13
+  message: MyText
+  user_id: 1
+  exam_id: 1

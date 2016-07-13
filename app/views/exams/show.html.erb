@@ -23,6 +23,12 @@
     			 </h3>
     
     		</div>
+    		<div class="links btn-group">	
+            	<% if current_user.id == 1 %>  
+                        <%= link_to "Edit", edit_exam_path(@exam), class: "btn btn-warning" %>
+        			    <%= link_to "Delete", exam_path(@exam), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-danger" %>    		
+            	<% end %>	
+            </div>	
     	</div>
     
     
@@ -30,7 +36,7 @@
     
     <div class="row">
     
-    	<div class="col-md-12">
+    	<div class="col-md-6">
     
     		
     
@@ -38,13 +44,20 @@
     			<h1>Gruppi di studio</h1>
     			
     
+        		<div class="col-md-12">
+        			<%= render @exam.groups %>
+        			
+        		</div>	
+    
+    		    
+    
     			<div>
-    				<%= link_to "Aggiungi Gruppo", root_path, class: "btn btn-default" %>
+    				<%= link_to "Aggiungi Gruppo", new_exam_group_path(@exam), class: "btn btn-default" %>
     			</div>
     
     	</div>	
     		
-    	<div class="col-md-12">
+    	<div class="col-md-6">
     
     		<div>
     
@@ -59,15 +72,7 @@
     		</div>	
     
     	</div>
-    	<div class="col-md-12">
-            <div class="links btn-group">	
-            	<% if current_user.id == 1 %>  
-                        <%= link_to "Edit", edit_exam_path(@exam), class: "btn btn-warning" %>
-        			    <%= link_to "Delete", exam_path(@exam), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-danger" %>    		
-            	<% end %>	
-            </div>	
-    
-    	</div>
+    	
 
     </div>
     

@@ -1,0 +1,48 @@
+<%= simple_form_for([@exam, @group]) do |f| %>
+	<%= f.input :message, :required => true %>
+	
+	<div id="locationField">
+	<%= f.input :location, :input_html => { :id => 'autocomplete', :onFocus => 'geolocate()' }, :required => true %>
+    </div>
+    
+    <%= f.input :date,  class: "datepicker" , :required => true %>
+
+   
+
+	<%= f.button :submit, :class => "btn-default" %>
+<% end %>
+
+
+
+
+   
+
+   <script>
+      var placeSearch, autocomplete;
+      
+
+      function initAutocomplete() {
+        
+        autocomplete = new google.maps.places.Autocomplete(
+            (document.getElementById('autocomplete')),
+            {types: ['geocode']});
+      }
+
+      function geolocate() {
+        if (navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition(function(position) {
+            var geolocation = {
+              lat: position.coords.latitude,
+              lng: position.coords.longitude
+            };
+            var circle = new google.maps.Circle({
+              center: geolocation,
+              radius: position.coords.accuracy
+            });
+            autocomplete.setBounds(circle.getBounds());
+          });
+        }
+      }
+    </script>
+    <script  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyASUFPW90CcixG4HJ4j4sVverr6C3KyOrw&libraries=places&callback=initAutocomplete"
+        async defer ></script>

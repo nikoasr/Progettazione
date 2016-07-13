@@ -2,7 +2,6 @@ class ExamsController < ApplicationController
     before_action :find_exam, only: [:show, :edit, :update, :destroy]
     before_action :authenticate_user!, only: [:new, :create, :show, :edit, :update, :destroy]
     
-    
     def index
         if params[:anno].blank?
 			@exams = Exam.all.order("nome")
@@ -16,8 +15,8 @@ class ExamsController < ApplicationController
     end    
     
     def create
-        @exam = Exam.new(exam_params)
-        if @exam.save
+    	@exam = Exam.new(exam_params)
+		if @exam.save
 			redirect_to root_path
 		else
 			render 'new'
@@ -31,8 +30,7 @@ class ExamsController < ApplicationController
     end
     
     def update
-    	
-		if @exam.update(exam_params)
+    	if @exam.update(exam_params)
 			redirect_to exam_path(@exam)
 		else
 			render 'edit'

@@ -1,8 +1,9 @@
 <%= simple_form_for @exam, :html => { :multipart => true } do |f| %>
-	<%= f.input :nome %>
-	<%= f.input :anno %>
-	<%= f.input :professore %>
+
+	<%= f.input :nome, :required => true %>
+	<%= f.input :anno, :required => true %>
+	<%= f.input :professore, :required => true %>
 	<%= f.input :professore2 %>
-	<%= f.input :sito %>
-	<%= f.button :submit, :class => "btn-default" %>
+	<%= f.input :sito, :required => true %>
+	<%= f.button :submit, :required => true, :class => "btn-default" %>
 <% end %>
