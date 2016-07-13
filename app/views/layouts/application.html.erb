@@ -55,12 +55,14 @@
             <%= link_to "Sign out", signout_path, id: "sign_out" %>
             
           <% end %>
-				</li>  
+				</li>
+
         <li>
   				<% if current_user %>
             
           <% else %>
-            <%= link_to "Sign in with Facebook", "/auth/facebook", id: "sign_in" %>
+          	<%= link_to "Sign in with Facebook", "/auth/facebook", id: "sign_in" %>
+            
           <% end %>
 				</li>
 			</ul>
@@ -70,14 +72,18 @@
 </nav>
   
   
-  
-  
-
+ 
 
 
 <div class="container">
   <%= yield %>
 </div>
 
+
+  
+<div class="container">
+  <p class="notice"><%= notice %></p>
+	<p class="alert"><%= alert %></p>
+</div> 
 </body>
 </html>

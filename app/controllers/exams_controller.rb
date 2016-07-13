@@ -1,7 +1,6 @@
 class ExamsController < ApplicationController
-    before_action :current_user, only: [:show]
-    
     before_action :find_exam, only: [:show, :edit, :update, :destroy]
+    before_action :authenticate_user!, only: [:new, :create, :show, :edit, :update, :destroy]
     
     
     def index
