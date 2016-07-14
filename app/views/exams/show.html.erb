@@ -1,11 +1,7 @@
     <div class="row">
     
-    	<div class="col-md-4">
     
-    
-    	</div>
-    
-    	<div class="col-md-8">
+    	<div class="col-md-offset-4">
     
     		<div >
     
@@ -26,11 +22,11 @@
     		<div class="links btn-group">	
             	<% if current_user.id == 1 %>  
                         <%= link_to "Edit", edit_exam_path(@exam), class: "btn btn-warning" %>
-        			    <%= link_to "Delete", exam_path(@exam), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-danger" %>    		
+        			    <%= link_to "Delete", exam_path(@exam), method: :delete, data: { confirm: "Sei sicuro?" }, class: "btn btn-danger" %>    		
             	<% end %>	
             </div>	
     	</div>
-    
+        
     
     </div>
     
@@ -52,7 +48,7 @@
     		    
     
     			<div>
-    				<%= link_to "Aggiungi Gruppo", new_exam_group_path(@exam), class: "btn btn-default" %>
+    				<%= link_to "Aggiungi Gruppo", new_exam_group_path(@exam),  method: :get, class: "btn btn-default" %>
     			</div>
     
     	</div>	

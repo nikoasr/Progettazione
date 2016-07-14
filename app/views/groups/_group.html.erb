@@ -1,8 +1,8 @@
                        
     <h3>Creato da <%= User.find(group.user_id).name %></h3>   				
-    <h5>Data: <%= group.date.strftime("%d %b %Y") %></h5>
+    <h5>Data: <%= group.datetime.strftime("%d/%m/%Y Ore: %H:%M") %></h5>
     <h5>Luogo: 
-    <a href='/exams/<%=group.exam_id%>/groups/<%= group.id %>'><%= group.location %></a>
+    <a href='/exams/<%=group.exam_id%>/groups/<%= group.id %>' target=”_blank”><%= group.location %></a>
     </h5>
     <h5>Descrizione: <%= group.message %></h5>
     <h5>Partecipanti: 
@@ -11,7 +11,7 @@
     <% User.where(:id => member.user_id).each do |utente| %>
     <h4><%= utente.name %></h4>
     <% if current_user.id == utente.id %>  
-        <%= link_to "Annulla", exam_group_member_path(group.exam, group, member), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-danger" %> 		
+        <%= link_to "Annulla", exam_group_member_path(group.exam, group, member), method: :delete, data: { confirm: "Sei sicuro?" }, class: "btn btn-danger" %> 		
     <% end %>	
     
     
@@ -31,8 +31,8 @@
 
 			<div class="links btn-group">
 
-				<%= link_to "Edit", edit_exam_group_path(group.exam, group), class: "btn btn-warning" %>
-				<%= link_to "Delete", exam_group_path(group.exam, group), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-danger" %>
+				<%= link_to "Edit", edit_exam_group_path(group.exam, group), method: :get, class: "btn btn-warning" %>
+				<%= link_to "Delete", exam_group_path(group.exam, group), method: :delete, data: { confirm: "Sei sicuro?" }, class: "btn btn-danger" %>
 
 			</div>
 		

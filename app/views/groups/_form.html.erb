@@ -1,21 +1,25 @@
+
 <%= simple_form_for([@exam, @group]) do |f| %>
 	<%= f.input :message, :required => true %>
 	
 	<div id="locationField">
 	<%= f.input :location, :input_html => { :id => 'autocomplete', :onFocus => 'geolocate()' }, :required => true %>
     </div>
-    
-    <%= f.input :date,  class: "datepicker" , :required => true %>
+             <label class="text required control-label" for="group_message"><abbr title="required">*</abbr> Date</label>
 
-   
+
+<div class="input-group date" id="datetimepicker">
+         
+          <%= f.text_field :datetime, data: { :date_format => 'DD/MM/YYYY hh:mm' }, :class => 'form-control datetimepicker' %>
+        <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+      </div>
 
 	<%= f.button :submit, :class => "btn-default" %>
+	
 <% end %>
 
 
 
-
-   
 
    <script>
       var placeSearch, autocomplete;

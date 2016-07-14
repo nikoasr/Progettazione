@@ -19,6 +19,7 @@ class GroupsController < ApplicationController
 		@group = Group.new(group_params)
 		@group.exam_id = @exam.id
 		@group.user_id = current_user.id
+		
 
 		if @group.save
 			redirect_to exam_path(@exam)
@@ -46,7 +47,7 @@ class GroupsController < ApplicationController
 	private
 
 		def group_params
-			params.require(:group).permit(:date, :message, :location)
+			params.require(:group).permit(:message, :location, :datetime)
 		end
 
 		def find_exam

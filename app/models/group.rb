@@ -4,5 +4,5 @@ class Group < ActiveRecord::Base
     
     has_many :members
     
-    validates :message, :date, :location, :presence => true
+    validates :message, :datetime, :location, :presence => true
 end
