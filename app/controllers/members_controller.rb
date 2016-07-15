@@ -20,10 +20,16 @@ class MembersController < ApplicationController
 	end
 	
 	def new
+		if Member.where(:user_id => current_user.id, :group_id => @group.id).count > 0
+			redirect_to exam_path(@exam)
+			return
+		end
+		
 		@member = Member.new
 		@member.group_id = @group.id
 		@member.user_id = current_user.id
 		@member.exam_id = @group.exam_id
+		
 
 		if @member.save
 			redirect_to exam_path(@exam)

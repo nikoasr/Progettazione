@@ -9,17 +9,28 @@
     
     
         <h5>Partecipanti: 
+        
+        
+        
         <% Member.where(:group_id => group.id ).each do |member|  %>
             <% User.where(:id => member.user_id).each do |utente| %>
+            
+            <div class="col-md-12">
+
+        		
             <b><%= utente.name %></b>
                 <% if current_user.id == utente.id %>  
-                    <%= link_to "Annulla", exam_group_member_path(group.exam, group, member), method: :delete, data: { confirm: "Sei sicuro?" }, class: "btn btn-danger" %> 		
+                    <b><%= link_to "X", exam_group_member_path(group.exam, group, member), method: :delete, data: { confirm: "Sei sicuro?" }, class: "btn btn-link" %> </b>		
+                <% else %>
+                    <b><%= link_to "O", "#", class: "btn btn-link" %> </b>	
                 <% end %>	
-            
-            
+                
+            </div>
             <% end %>
         <% end %>
         </h5>
+        
+        
     <% end %>
     
     
