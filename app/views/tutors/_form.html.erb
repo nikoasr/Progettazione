@@ -1,7 +1,8 @@
 <%= simple_form_for([@exam, @tutor]) do |f| %>
 	
-	<%= f.input :cel, :required => true, label: 'Cellulare', placeholder: 'Inserisci un numero di cellulare' %>
 	<%= f.input :email, :required => true, label: 'Email', placeholder: 'Inserisci la tua email' %>
+	<%= f.input :cel, :required => true, label: 'Cellulare', placeholder: 'Inserisci un numero di cellulare' %>
+
 	
 	<%= f.button :submit, :class => "btn-default" %>
 	
