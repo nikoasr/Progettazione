@@ -1,0 +1,29 @@
+                       
+    <h4>Tutor: <b><%= User.find(tutor.user_id).name %></b></h4>   				
+    <h4>Email: <b><%= tutor.email %></b></h4>   				
+    <h4>Cellulare: <b><%= tutor.cel %></b></h4>   				
+
+    
+    
+    
+    
+    
+    
+
+
+    
+    
+    
+    
+    
+    <% if tutor.user_id == current_user.id %>
+
+			<div class="links btn-group">
+
+				<%= link_to "Edit", edit_exam_tutor_path(tutor.exam, tutor), method: :get, class: "btn btn-warning" %>
+				<%= link_to "Delete", exam_tutor_path(tutor.exam, tutor), method: :delete, data: { confirm: "Sei sicuro?" }, class: "btn btn-danger" %>
+
+			</div>
+		
+	<% end %>	
+

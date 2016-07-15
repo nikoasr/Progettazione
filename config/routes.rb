@@ -4,6 +4,7 @@ Rails.application.routes.draw do
 
   # You can have the root of your site routed with "root"
   resources :exams do
+    resources :tutors
     resources :groups do
       resources :members
     end

@@ -56,12 +56,16 @@
     
     		<div>
     
-    			<!-- Where the reviews/ratings will go -->
-    			<h1>Difficoltà</h1>
+    			<h1>Studenti Tutor</h1>
     			
+    			<div class="col-md-12">
+        			<%= render @exam.tutors %>
+        			
+        		 </div>	
+    
     
     			<div>
-    				<%= link_to "Aggiungi Difficoltà", root_path, class: "btn btn-default" %>
+    				<%= link_to "Diventa Studente Tutor", new_exam_tutor_path(@exam), class: "btn btn-default" %>
     			</div>
     
     		</div>	

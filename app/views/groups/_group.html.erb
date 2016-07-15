@@ -1,24 +1,27 @@
                        
-    <h3>Creato da <%= User.find(group.user_id).name %></h3>   				
-    <h5>Data: <%= group.datetime.strftime("%d/%m/%Y Ore: %H:%M") %></h5>
+    <h3>Creato da <b><%= User.find(group.user_id).name %></b></h3>   				
+    <h5>Data: <b><%= group.datetime.strftime("%d/%m/%Y Ore: %H:%M") %></b></h5>
     <h5>Luogo: 
-    <a href='/exams/<%=group.exam_id%>/groups/<%= group.id %>' target=”_blank”><%= group.location %></a>
+    <b><a href='/exams/<%=group.exam_id%>/groups/<%= group.id %>' target=”_blank”><%= group.location %></a></b>
     </h5>
-    <h5>Descrizione: <%= group.message %></h5>
-    <h5>Partecipanti: 
-    
-    <% Member.where(:group_id => group.id ).each do |member|  %>
-    <% User.where(:id => member.user_id).each do |utente| %>
-    <h4><%= utente.name %></h4>
-    <% if current_user.id == utente.id %>  
-        <%= link_to "Annulla", exam_group_member_path(group.exam, group, member), method: :delete, data: { confirm: "Sei sicuro?" }, class: "btn btn-danger" %> 		
-    <% end %>	
+    <h5>Descrizione: <b><%= group.message %></b></h5>
+    <% if Member.where(:group_id => group.id ).count > 0  %>
     
     
+        <h5>Partecipanti: 
+        <% Member.where(:group_id => group.id ).each do |member|  %>
+            <% User.where(:id => member.user_id).each do |utente| %>
+            <b><%= utente.name %></b>
+                <% if current_user.id == utente.id %>  
+                    <%= link_to "Annulla", exam_group_member_path(group.exam, group, member), method: :delete, data: { confirm: "Sei sicuro?" }, class: "btn btn-danger" %> 		
+                <% end %>	
+            
+            
+            <% end %>
+        <% end %>
+        </h5>
     <% end %>
-    <% end %>
     
-    </h5>
     
     <%= link_to "Partecipa", new_exam_group_member_path(group.exam, group), class: "btn btn-default" %>
     

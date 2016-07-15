@@ -1,11 +1,11 @@
 
 <%= simple_form_for([@exam, @group]) do |f| %>
-	<%= f.input :message, :required => true, placeholder: 'Inserisci un messaggio' %>
+	<%= f.input :message, :required => true, placeholder: 'Inserisci un messaggio', label: 'Messaggio' %>
 	
 	<div id="locationField">
-	<%= f.input :location, :input_html => { :id => 'autocomplete', :onFocus => 'geolocate()' },  :required => true %>
+	<%= f.input :location, :input_html => { :id => 'autocomplete', :onFocus => 'geolocate()' },  :required => true, label: 'Luogo' %>
   </div>
-  <label class="text required control-label" for="group_message"><abbr title="required">*</abbr> Date</label>
+  <label class="text required control-label" for="group_message"><abbr title="required">*</abbr> Data</label>
 
 <div class="form-group">
   <div class="input-group date" id="datetimepicker">
