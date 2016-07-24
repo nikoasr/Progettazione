@@ -4,7 +4,7 @@
     <% if Tutor.where(:user_id => current_user.id ).count > 0  %>
 	<div class="row">
 	    
-	    <h1>Tutoraggi attivi:</h1>
+	    <h1>Tutoraggi attivi</h1>
 	    <div class="col-md-12">
 	    <% Tutor.where(:user_id => current_user.id ).each do |tutor|  %>
 	        <% Exam.where(:id => tutor.exam_id).each do |exam| %>
@@ -20,7 +20,7 @@
     <% if Member.where(:user_id => current_user.id ).count > 0  %>
 	<div class="row">
 	    
-	    <h1>Gruppi attivi:</h1>
+	    <h1>Gruppi attivi</h1>
 	    <div class="col-md-12">
 	    <% Member.where(:user_id => current_user.id ).each do |member|  %>
 	        <% Group.where(:id => member.group_id).each do |group| %>
@@ -72,7 +72,42 @@
 
 <% else %>
   
-    <h1>Effettua il login per utilizzare il sito aggiungo intro robbs</h1>
+   <div class="intro-header">
+        <div class="container">
+
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="intro-message">                                                
+                        <div class="panel panel-primary">         	
+                            <div class="panel-heading"><h1>Benvenuto in UniGroup</h1></div>
+                            <div class="panel-body">
+                                <h3>UniGroup è un'applicazione creata per semplificare la tua vita universitaria</h3>
+                                
+                                <hr class="intro-divider">
+                                <a href = "/auth/facebook" id = "sign_in" class="btn btn-social btn-facebook btn-lg">
+                                  <i class="fa fa-facebook"></i> Accedi con Facebook
+                                </a>
+                                
+                                <hr class="intro-divider">
+                                <ul class="list-inline intro-social-buttons">
+                                   
+                                    <li>
+                                        <a href="https://github.com/nikoasr/Progettazione" target=”_blank” class="btn btn-default btn-lg"><i class="fa fa-github fa-fw"></i> <span class="network-name">Github</span></a>
+                                    </li>
+                                    <li>
+                                        <a href="https://www.linkedin.com/in/nicolò-cardamone-40644a124" target=”_blank” class="btn btn-default btn-lg"><i class="fa fa-linkedin fa-fw"></i> <span class="network-name">Linkedin</span></a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <!-- /.container -->
+
+    </div>                        
 
 <% end %>
     
