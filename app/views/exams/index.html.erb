@@ -1,31 +1,17 @@
 
 
 <% if current_user %>  
-    <% if Tutor.where(:user_id => current_user.id ).count > 0  %>
-	<div class="row">
-	    
-	    <h1>Tutoraggi attivi</h1>
-	    <div class="col-md-12">
-	    <% Tutor.where(:user_id => current_user.id ).each do |tutor|  %>
-	        <% Exam.where(:id => tutor.exam_id).each do |exam| %>
-	        
-	        <h4><b><%= exam.nome %></b></h4>
-	        
-	        
-	        <% end %>	
-        <% end %>
-    </div></div>	
-    <% end %>
+    
     
     <% if Member.where(:user_id => current_user.id ).count > 0  %>
 	<div class="row">
 	    
-	    <h1>Gruppi attivi</h1>
+	    <h1>Gruppi </h1>
 	    <div class="col-md-12">
 	    <% Member.where(:user_id => current_user.id ).each do |member|  %>
 	        <% Group.where(:id => member.group_id).each do |group| %>
 	        
-	        <h3>Creato da <b><%= User.find(group.user_id).name %></b> in <b><%= Exam.find(group.exam_id).nome %></b></h3>   				
+	        <h3>Creato da <b><%= User.find(group.user_id).name %></b> in <a href="/exams/<%= group.exam.id %>"><b><%= Exam.find(group.exam_id).nome %></b></a></h3>   				
             <h5>Data: <b><%= group.datetime.strftime("%d/%m/%Y Ore: %H:%M") %></b></h5>
             <h5>Luogo: 
             <b><a href='/exams/<%=group.exam_id%>/groups/<%= group.id %>' target=”_blank”><%= group.location %></a></b>
@@ -38,7 +24,24 @@
     </div></div>	
     <% end %>
     
-    
+    <% if Tutor.where(:user_id => current_user.id ).count > 0  %>
+	<div class="row">
+	    
+	    <h1>Tutoraggi </h1>
+	    <div class="col-md-12">
+	    <% Tutor.where(:user_id => current_user.id ).each do |tutor|  %>
+	        <% Exam.where(:id => tutor.exam_id).each do |exam| %>
+	        <a href="/exams/<%= exam.id %>">
+    					
+    				
+	            <h4><b><%= exam.nome %></b></h4>
+	        </a>
+	        
+	        <% end %>	
+        <% end %>
+        </div>
+    </div>	
+    <% end %>
     
     
     <% if @exams.count == 0 %>
@@ -81,7 +84,7 @@
                         <div class="panel panel-primary">         	
                             <div class="panel-heading"><h1>Benvenuto in UniGroup</h1></div>
                             <div class="panel-body">
-                                <h3>UniGroup è un'applicazione creata per semplificare la tua vita universitaria</h3>
+                                <h3>Semplifichiamo la tua vita universitaria</h3>
                                 
                                 <hr class="intro-divider">
                                 <a href = "/auth/facebook" id = "sign_in" class="btn btn-social btn-facebook btn-lg">

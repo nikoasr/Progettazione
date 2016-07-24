@@ -20,6 +20,8 @@ class GroupsController < ApplicationController
 		@group.exam_id = @exam.id
 		@group.user_id = current_user.id
 		
+		@member = Member.new
+		
 
 		if @group.save
 			redirect_to exam_path(@exam)
