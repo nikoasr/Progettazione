@@ -34,9 +34,11 @@
     <% end %>
     
     
+    <% if Member.where(:group_id => group.id, :user_id => current_user.id ).count == 0  %>
+    
     <%= link_to "Partecipa", new_exam_group_member_path(group.exam, group), class: "btn btn-default" %>
     
-    
+    <% end %>
     
     
     
