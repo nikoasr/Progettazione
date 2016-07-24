@@ -22,9 +22,15 @@ class GroupsController < ApplicationController
 		
 		@member = Member.new
 		
-
+		@member.exam_id = @exam.id
+		@member.user_id = current_user.id
+		
+		
 		if @group.save
-			redirect_to exam_path(@exam)
+			@member.group_id = @group.id
+			if @member.save
+				redirect_to exam_path(@exam)
+			end
 		else
 			render 'new'
 		end
@@ -42,6 +48,9 @@ class GroupsController < ApplicationController
 	end
 
 	def destroy
+		Member.where(:group_id => @group.id ).each do |mem|
+			mem.destroy
+		end
 		@group.destroy
 		redirect_to exam_path(@exam)
 	end

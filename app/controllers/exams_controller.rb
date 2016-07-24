@@ -38,6 +38,18 @@ class ExamsController < ApplicationController
 	end
     
     def destroy
+		Member.where(:exam_id => @exam.id ).each do |mem|
+			mem.destroy
+		end
+		
+		Group.where(:exam_id => @exam.id ).each do |gro|
+			gro.destroy
+		end
+		
+		Tutor.where(:exam_id => @exam.id ).each do |tut|
+			tut.destroy
+		end
+		
 		@exam.destroy
 		redirect_to root_path
 	end
