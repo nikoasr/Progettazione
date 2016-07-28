@@ -1,6 +1,7 @@
 class ExamsController < ApplicationController
     before_action :find_exam, only: [:show, :edit, :update, :destroy]
     before_action :authenticate_user!, only: [:new, :create, :show, :edit, :update, :destroy]
+    before_action :admin!, only: [:new, :create, :edit, :update, :destroy]
     
     def index
         if params[:anno].blank? && params[:src].blank?
@@ -66,6 +67,9 @@ class ExamsController < ApplicationController
 
 		def find_exam
 			@exam = Exam.find(params[:id])
+			rescue ActiveRecord::RecordNotFound => e
+				flash[:alert] = "Esame Non Trovato"
+				redirect_to root_path
 		end
 	
 end

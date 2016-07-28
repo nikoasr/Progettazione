@@ -3,6 +3,7 @@ class TutorsController < ApplicationController
     before_action :find_exam
 	before_action :find_tutor, only: [:edit, :update, :destroy, :show]
 	before_action :authenticate_user!, only: [:new, :edit, :show]
+	before_action :owner!, only: [:edit, :destroy]
 
 	def index
 		redirect_to exam_path(@exam)
@@ -57,7 +58,17 @@ class TutorsController < ApplicationController
 
 		def find_tutor
 			@tutor = Tutor.find(params[:id])
+			rescue ActiveRecord::RecordNotFound => e
+				flash[:alert] = "Tutor Non Trovato"
+				redirect_to root_path
 		end
 
+		def owner!
+	     if current_user.id != @tutor.user_id
+	      flash[:alert] = "Accesso Negato"
+	      redirect_to root_path
+	     end
+	    end
+	    helper_method :owner!
 
 end

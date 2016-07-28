@@ -5,4 +5,5 @@ class ExamTest < ActiveSupport::TestCase
       exam = Exam.new
       assert_not exam.save
     end
+
 end
