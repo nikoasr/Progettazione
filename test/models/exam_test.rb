@@ -1,7 +1,8 @@
 require 'test_helper'
 
 class ExamTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+    test "should not save exam without fields" do
+      exam = Exam.new
+      assert_not exam.save
+    end
 end

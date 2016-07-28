@@ -3,10 +3,14 @@ class ExamsController < ApplicationController
     before_action :authenticate_user!, only: [:new, :create, :show, :edit, :update, :destroy]
     
     def index
-        if params[:anno].blank?
+        if params[:anno].blank? && params[:src].blank?
 			@exams = Exam.all.order("nome")
-		else
+		elsif params[:anno] && params[:src].blank?
 			@exams = Exam.where(:anno => params[:anno]).order("nome")
+		elsif params[:anno].blank? && params[:src]
+			@exams = Exam.where("nome like ?", "%#{params[:src].titleize}%").order("nome")
+		else 
+			@exams = Exam.where(:anno => params[:anno]).where("nome like ?", "%#{params[:src].titleize}%").order("nome")
 		end
     end
     

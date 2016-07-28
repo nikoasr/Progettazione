@@ -12,6 +12,7 @@ gem 'jquery-turbolinks'
 gem 'turbolinks'
 gem "font-awesome-rails"
 gem 'omniauth-facebook'
+gem 'bootstrap_form'
 gem 'bootstrap-sass', '~> 3.3', '>= 3.3.6'
 gem 'simple_form', '~> 3.2', '>= 3.2.1'
 gem 'jbuilder', '~> 2.0'
