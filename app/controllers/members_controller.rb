@@ -32,6 +32,7 @@ class MembersController < ApplicationController
 		
 
 		if @member.save
+			flash[:notice] = ""
 			redirect_to exam_path(@exam)
 		else
 			render 'new'
@@ -44,6 +45,7 @@ class MembersController < ApplicationController
 		@member.user_id = current_user.id
 
 		if @member.save
+			
 			redirect_to exam_path(@exam)
 		else
 			render 'new'

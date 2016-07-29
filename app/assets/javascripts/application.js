@@ -57,7 +57,7 @@ $.rails.showConfirmationDialog = function(link){
     
     setTimeout(function(){
         $.rails.confirmed(link);
-    }, 2000);
+    }, 1000);
     
   });
 };
