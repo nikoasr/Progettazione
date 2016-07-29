@@ -30,6 +30,7 @@ class GroupsController < ApplicationController
 		if @group.save
 			@member.group_id = @group.id
 			if @member.save
+				flash[:notice] = "Gruppo Creato"
 				redirect_to exam_path(@exam)
 			end
 		else
@@ -42,6 +43,7 @@ class GroupsController < ApplicationController
 
 	def update
 		if @group.update(group_params)
+			flash[:notice] = "Gruppo Modificato"
 			redirect_to exam_path(@exam)
 		else
 			render 'edit'

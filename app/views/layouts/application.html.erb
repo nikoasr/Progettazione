@@ -98,6 +98,13 @@
 		  <strong>Errore!</strong> <%= alert %>
 		</div>
 	<% end %> 
+	
+	<% if notice %>
+		<div class="alert alert-info">
+		  <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+		  <%= notice %>
+		</div>
+	<% end %> 
 </div>
 
 
@@ -105,11 +112,6 @@
   <%= yield %>
 </div>
 
-
-  
-<div class="container">
-  <p class="notice"><%= notice %></p>
-</div> 
 
 
 </body>
