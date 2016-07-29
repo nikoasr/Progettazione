@@ -3,6 +3,6 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
 $(document).ready ->
-    $('#success-alert').fadeTo(2000, 500).slideUp 500, ->
+    $('#success-alert').fadeTo(3000, 500).slideUp 500, ->
       $('#success-alert').alert 'close'
         

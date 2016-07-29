@@ -21,9 +21,7 @@
 
 //= require_tree .
 
-$("#success-alert").fadeTo(2000, 500).slideUp(500, function(){
-    $("#success-alert").alert('close');
-});
+
 
 $.rails.allowAction = function(link){
   if (link.data("confirm") == undefined){
