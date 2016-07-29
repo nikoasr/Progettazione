@@ -24,6 +24,7 @@ class TutorsController < ApplicationController
 		
 
 		if @tutor.save
+			flash[:notice] = "Tutor Creato"
 			redirect_to exam_path(@exam)
 		else
 			render 'new'
@@ -35,6 +36,7 @@ class TutorsController < ApplicationController
 
 	def update
 		if @tutor.update(tutor_params)
+			flash[:notice] = "Tutor Modificato"
 			redirect_to exam_path(@exam)
 		else
 			render 'edit'
