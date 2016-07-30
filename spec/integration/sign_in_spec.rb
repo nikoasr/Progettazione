@@ -27,10 +27,7 @@ describe "GET '/auth/facebook/callback' + create mod" do
     expect(page).to have_content 'Gaius'
   end
   
-  it "show exam" do
-    visit '/exams/2'
-    expect(page).to have_content 'antartico'
-  end
+
   
   it "exit" do
     get '/signout'
