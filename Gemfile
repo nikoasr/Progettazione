@@ -22,6 +22,7 @@ group :development, :test do
   gem 'byebug'
   gem 'rspec-rails', '~> 3.5'
   gem 'capybara', :git => 'git://github.com/jnicklas/capybara.git'
+  gem 'factory_girl'
 end
 
 group :development do

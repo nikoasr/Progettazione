@@ -4,12 +4,6 @@ require 'spec_helper'
 
 
 describe "GET '/auth/facebook/callback' + create mod" do
-  before do
-    @exam = Exam.new(nome: "PROVA", anno: "1", sito: "www.google.it", professore: "Bobbo Vieri", professore2: "")
-    @exam.save
-    @group = Group.new(message: "XXX", location: "via", datetime: "2016-08-03 10:00:00")
-    @group.save
-  end
   before(:each) do
     valid_facebook_login_setup
     get "/auth/facebook/callback"
@@ -22,9 +16,45 @@ describe "GET '/auth/facebook/callback' + create mod" do
     expect(page).to have_content 'Gaius'
   end
   
+  it "exam view " do
+    exam = create(:exam)
+    
+    visit exam_path(exam)
+    expect(page).to have_content 'Bobbo Vieri'
+  end
+  
+  it "create group" do
+    exam = create(:exam)
+    visit exam_path(exam)
+    click_link "Aggiungi Gruppo"
+    
+    fill_in 'group_message', :with => 'XXX'
+    fill_in 'autocomplete', :with => 'via'
+    fill_in 'group_datetime', :with => '2016-08-03 10:00:00'
+    click_button "Crea Gruppo"
+    
+    expect(page).to have_content 'Creato da Gaius Baltar'
+    expect(page).to have_content 'Descrizione: XXX'
+  end
+  
+  it "create tutor-student" do
+    exam = create(:exam)
+    visit exam_path(exam)
+    click_link "Diventa Studente Tutor"
+    
+    fill_in 'tutor_email', :with => 'a@aa.it'
+    fill_in 'tutor_cel', :with => '65466'
+    click_button "Crea Tutor"
+    
+    expect(page).to have_content 'Email: a@aa.it'
+    expect(page).to have_content 'Cellulare: 65466'
+  end
+
+  
   it "blocks url hackerzz" do
     visit '/exams/7575775'
     expect(page).to have_content 'Gaius'
+    expect(page.current_path).to eq '/'
   end
   
 
