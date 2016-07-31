@@ -13,7 +13,7 @@ describe "GET '/auth/facebook/callback' + create mod" do
 
 
   it "signs me in" do
-    expect(page).to have_content 'Gaius'
+    expect(page).to have_content 'Gaius Baltar'
   end
   
   it "exam view " do
@@ -37,6 +37,20 @@ describe "GET '/auth/facebook/callback' + create mod" do
     expect(page).to have_content 'Descrizione: XXX'
   end
   
+  it "create group" do
+    exam = create(:exam)
+    visit exam_path(exam)
+    click_link "Aggiungi Gruppo"
+    
+    fill_in 'group_message', :with => ''
+    fill_in 'autocomplete', :with => ''
+    fill_in 'group_datetime', :with => ''
+    click_button "Crea Gruppo"
+    
+    expect(page).to have_no_content 'Creato da Gaius Baltar'
+    expect(page).to have_no_content 'Descrizione: '
+  end
+  
   it "create tutor-student" do
     exam = create(:exam)
     visit exam_path(exam)
@@ -48,6 +62,19 @@ describe "GET '/auth/facebook/callback' + create mod" do
     
     expect(page).to have_content 'Email: a@aa.it'
     expect(page).to have_content 'Cellulare: 65466'
+  end
+
+  it "invalid create tutor-student" do
+    exam = create(:exam)
+    visit exam_path(exam)
+    click_link "Diventa Studente Tutor"
+    
+    fill_in 'tutor_email', :with => 'invalid email'
+    fill_in 'tutor_cel', :with => 'invalid number'
+    click_button "Crea Tutor"
+    
+    expect(page).to have_no_content 'Email: a@aa.it'
+    expect(page).to have_no_content 'Cellulare: 65466'
   end
 
   
